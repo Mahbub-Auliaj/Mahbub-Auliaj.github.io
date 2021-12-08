@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scaleable=no">
+	<meta charset="utf-8">
+	<title>Lokasi Tokko</title>
+</head>
+<body>
+	<div id="map" style= "width: 100%;height: 600px";></div>
+
+	<script>
+		function initMap() {
+        
+        var tokko = {lat: -7.634630, lng: 112.710216};
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: tokko
+        });
+
+        var contentString = '<img src="Toko.jpg">';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          position: tokko
+        });
+        
+        var marker = new google.maps.Marker({
+          position: tokko,
+          map: map,
+          animation: google.maps.Animation.BOUNCE,
+          title: 'TOKKO'
+        });
+        
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        
+      }
+
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+	</script>
+</body>
+</html>
